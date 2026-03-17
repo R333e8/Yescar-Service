@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>យានដ្ឋា​ន Yescer Services | Premium Car Detailing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;700&family=Oswald:wght@500;700&display=swap');
+        
+        :root { --accent: #ffb703; --dark: #0a0c10; --red: #ff4d4d; }
+        body { font-family: 'Kantumruy Pro', sans-serif; background-color: var(--dark); color: white; margin: 0; }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        .accent-color { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+
+        /* Navigation Scrollable for Mobile */
+        .nav-scroll {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        .nav-scroll::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+        
+        .nav-link {
+            padding: 10px 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #888;
+            transition: 0.3s;
+        }
+        .nav-link.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+
+        .page { display: none; }
+        .page.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Grid Adjustments */
+        .img-box { position: relative; overflow: hidden; border-radius: 8px; }
+        .price-tag { background: rgba(0,0,0,0.8); color: var(--accent); padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+        
+        /* បន្ថែមសម្រាប់តម្លៃបញ្ចុះ */
+        .old-price { text-decoration: line-through; color: #666; font-size: 10px; margin-right: 5px; }
+        .discount-badge { position: absolute; top: 5px; left: 5px; background: var(--red); color: white; padding: 2px 5px; border-radius: 4px; font-size: 9px; font-weight: bold; z-index: 10; }
+    </style>
+</head>
+<body>
+
+    <header class="bg-[#111] sticky top-0 z-50 border-b border-white/5">
+        <div class="flex justify-center py-4">
+            <div class="text-3xl font-bold font-oswald italic" onclick="showPage('home')">
+                <span class="accent-color">Yescer</span>Service
+            </div>
+        </div>
+        <nav class="nav-scroll justify-start md:justify-center border-t border-white/5 px-2">
+            <a href="javascript:void(0)" onclick="showPage('home')" class="nav-link active" id="link-home">ទំព័រដើម</a>
+            <a href="javascript:void(0)" onclick="showPage('about')" class="nav-link" id="link-about">អំពី</a>
+            <a href="javascript:void(0)" onclick="showPage('services')" class="nav-link" id="link-services">ប្រេង</a>
+            <a href="javascript:void(0)" onclick="showPage('projects')" class="nav-link" id="link-projects">គ្រឿងបន្លាស់</a>
+            <a href="javascript:void(0)" onclick="showPage('blog')" class="nav-link" id="link-blog">លាងឡាន</a>
+            <a href="javascript:void(0)" onclick="showPage('contact')" class="nav-link" id="link-contact">ទំនាក់ទំនង</a>
+        </nav>
+    </header>
+
+    <div id="home" class="page active">
+        <section class="h-[50vh] md:h-[70vh] flex items-center justify-center relative text-center px-4">
+            <img src="./img/smc.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30">
+            <div class="relative z-10">
+                <h1 class="text-4xl md:text-6xl font-bold font-oswald italic uppercase mb-4">Elite <span class="accent-color">Detailing</span></h1>
+                <p class="text-gray-400 text-sm max-w-xs mx-auto mb-6">មជ្ឈមណ្ឌលថែទាំរថយន្តកម្រិតខ្ពស់ និងគ្រឿងបន្លាស់ហ្ស៊ីន។</p>
+                <button onclick="showPage('services')" class="bg-accent text-black px-6 py-2.5 font-bold text-xs uppercase">View Services</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="about" class="page py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold font-oswald uppercase accent-color mb-6 italic">About Us</h2>
+            <img src="https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg" class="w-full rounded-lg mb-6 h-64 object-cover">
+            <p class="text-gray-400 leading-relaxed">យើងផ្តល់ជូននូវទំនុកចិត្ត និងគុណភាពខ្ពស់បំផុតលើការថែទាំរថយន្តលោកអ្នក ជាមួយគ្រឿងបន្លាស់ហ្ស៊ីន ១០០%។</p>
+        </div>
+    </div>
+
+    <div id="services" class="page py-10 px-4 bg-[#07090d]">
+        <h2 class="text-center text-3xl font-bold font-oswald uppercase italic mb-10">ប្រេង <span class="accent-color">ម៉ាសុីន</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <script>
+                // ទិន្នន័យផ្អែកលើរូបភាពទី១ (Engine Oil)
+                const oils = [
+                    {n: "AMSOIL 5W-30", old: "$24.41", p: "$18.31", disc: "25%"},
+                    {n: "Mobil 1 5W-30", old: "$30.00", p: "$25.50", disc: "15%"},
+                    {n: "Rymax 5W-30 (1L)", old: "$21.46", p: "$15.02", disc: "30%"},
+                    {n: "Toyota 5W-30 (1L)", old: "$17.54", p: "$12.28", disc: "30%"},
+                    {n: "AMSOIL 0W-20", old: "$27.34", p: "$20.51", disc: "25%"},
+                    {n: "Toyota 0W-20 (4L)", old: "$81.80", p: "$13.50", disc: "35%"}
+                ];
+                oils.forEach(item => {
+                    document.write(`
+                        <div class="bg-[#111] p-3 rounded-xl border border-white/5 relative">
+                            <span class="discount-badge">-${item.disc}</span>
+                            <div class="img-box mb-3">
+                                <img src="https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg?auto=compress&w=400" class="w-full h-32 object-cover">
+                            </div>
+                            <h3 class="font-bold text-[10px] uppercase truncate">${item.n}</h3>
+                            <div class="mt-2 flex flex-col">
+                                <span class="old-price">${item.old}</span>
+                                <span class="price-tag w-fit text-[12px]">${item.p}</span>
+                            </div>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+
+        <h2 class="text-center text-3xl font-bold font-oswald uppercase italic my-10">ប្រេងហ្រ្វាំង និង <span class="accent-color">ប្រអប់លេខ</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <script>
+                const others = [
+                    {n: "TOTACHI ATF (4L)", p: "$65.00", disc: "0%"},
+                    {n: "Briton ATF ULV", p: "$18.55", disc: "0%"},
+                    {n: "Rymax Gear Oil", p: "$11.16", disc: "25%"},
+                    {n: "Toyota Brake Dot 3", p: "$13.65", disc: "0%"},
+                    {n: "Rymax Brake Dot 4", p: "$9.85", disc: "25%"},
+                    {n: "Water Coolant", p: "$12.88", disc: "25%"}
+                ];
+                others.forEach(item => {
+                    document.write(`
+                        <div class="bg-[#111] p-3 rounded-xl border border-white/5 relative">
+                            ${item.disc !== "0%" ? `<span class="discount-badge">-${item.disc}</span>` : ''}
+                            <div class="img-box mb-3">
+                                <img src="https://images.pexels.com/photos/4489737/pexels-photo-4489737.jpeg?auto=compress&w=400" class="w-full h-32 object-cover">
+                            </div>
+                            <h3 class="font-bold text-[10px] uppercase truncate">${item.n}</h3>
+                            <div class="mt-2">
+                                <span class="price-tag w-fit text-[12px]">${item.p}</span>
+                            </div>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <div id="projects" class="page py-10 px-4">
+        <h2 class="text-center text-3xl font-bold font-oswald uppercase mb-10 italic">Spare <span class="accent-color">Parts</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+            <script>
+                for(let i=1; i<=10; i++) {
+                    document.write(`
+                        <div class="bg-[#161b26] p-2 rounded-lg border border-white/5">
+                            <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&w=200" class="w-full h-24 object-cover rounded mb-2">
+                            <p class="text-[9px] font-bold uppercase truncate">Item #${i}</p>
+                            <p class="accent-color font-bold text-xs mt-1">$15.00</p>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </div>
+
+    <div id="blog" class="page py-16 px-6">
+        <h2 class="text-3xl font-bold font-oswald uppercase mb-8 italic">Car <span class="accent-color">Blog</span></h2>
+        <div class="bg-[#111] p-5 rounded-lg border-l-4 border-accent">
+            <h3 class="font-bold mb-2">តើគួរដូរប្រេងម៉ាស៊ីនរាល់ប៉ុន្មានគីឡូ?</h3>
+            <p class="text-xs text-gray-500">គន្លឹះថែទាំម៉ាស៊ីនឱ្យបានយូរអង្វែង...</p>
+        </div>
+    </div>
+
+    <div id="contact" class="page py-10 px-4">
+        <h2 class="text-3xl font-bold font-oswald uppercase mb-8 italic text-center">Contact <span class="accent-color">Us</span></h2>
+        <div class="space-y-6">
+            <div class="bg-[#161b26] p-6 rounded-xl border border-white/5 text-center">
+                <i class="fas fa-phone-alt accent-color text-2xl mb-3"></i>
+                <p class="font-bold text-xl italic">093 658 036</p>
+                <a href="https://t.me/+85593658036" class="mt-3 inline-block bg-accent text-black px-6 py-2 rounded font-bold text-xs uppercase">Telegram</a>
+            </div>
+            <div class="h-64 rounded-xl overflow-hidden grayscale invert border border-white/10">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31270.835487677!2d104.91!3d11.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skh!4v1710000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-10 text-center opacity-20 text-[9px] uppercase tracking-[0.5em]">
+        © 2026 YESCER SERVICE.
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            const link = document.getElementById('link-' + pageId);
+            if(link) link.classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
